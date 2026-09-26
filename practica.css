@@ -1,0 +1,143 @@
+:root {
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  --bg: #f4f1ea;
+  --card: #ffffff;
+  --text: #2c2c2a;
+  --text-secondary: #6b6a63;
+  --border: #ddd9cd;
+  --accent: #185fa5;
+  --accent-bg: #e6f1fb;
+  --danger: #a32d2d;
+  --danger-bg: #fcebeb;
+  --success: #3b6d11;
+  --success-bg: #eaf3de;
+}
+html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1c1c1a;
+    --card: #2c2c2a;
+    --text: #f1efe8;
+    --text-secondary: #b4b2a9;
+    --border: #444441;
+    --accent-bg: #0c447c;
+    --danger-bg: #501313;
+    --success-bg: #173404;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1c1c1a;
+  --card: #2c2c2a;
+  --text: #f1efe8;
+  --text-secondary: #b4b2a9;
+  --border: #444441;
+  --accent-bg: #0c447c;
+  --danger-bg: #501313;
+  --success-bg: #173404;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  display: flex;
+  justify-content: center;
+  padding: 24px 16px;
+}
+.wrap { width: 100%; max-width: 560px; }
+h1 { font-size: 22px; font-weight: 500; text-align: center; margin: 0 0 20px; }
+.scores { display: flex; gap: 12px; margin-bottom: 16px; }
+.score-card {
+  flex: 1; background: var(--card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 12px; text-align: center;
+}
+.score-card.active { border-color: var(--accent); border-width: 2px; }
+.score-card p.label { margin: 0; font-size: 13px; color: var(--text-secondary); }
+.score-card p.value { margin: 4px 0 0; font-size: 26px; font-weight: 600; }
+.panel {
+  background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+  padding: 16px; margin-bottom: 16px; min-height: 60px;
+}
+.turn-info { display: flex; justify-content: space-between; font-size: 14px; color: var(--text-secondary); margin-bottom: 12px; }
+.turn-info b { color: var(--text); font-weight: 600; }
+.dice-row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin: 16px 0; min-height: 60px; }
+.die {
+  width: 52px; height: 52px; border-radius: 10px; border: 1px solid var(--border);
+  background: var(--card); cursor: pointer; user-select: none;
+  transition: transform 0.1s;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  padding: 8px;
+}
+.die .pip {
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--text);
+  align-self: center; justify-self: center;
+}
+.die.kept { background: var(--success-bg); border-color: var(--success); cursor: default; }
+.die.kept .pip { background: var(--success); }
+.die.selected { background: var(--accent-bg); border-color: var(--accent); transform: translateY(-4px); }
+.die.selected .pip { background: var(--accent); }
+.die.locked { opacity: 0.4; cursor: default; }
+
+.msg { text-align: center; font-size: 14px; min-height: 20px; margin-bottom: 12px; color: var(--text-secondary); }
+.msg.farkle { color: var(--danger); font-weight: 600; }
+.msg.win { color: var(--success); font-weight: 600; font-size: 18px; }
+.actions { display: flex; gap: 10px; }
+button {
+  flex: 1; padding: 12px; border-radius: 10px; border: 1px solid var(--border);
+  background: var(--card); color: var(--text); font-size: 15px; font-weight: 500;
+  cursor: pointer;
+}
+button:disabled { opacity: 0.4; cursor: not-allowed; }
+button.primary { background: var(--accent); color: white; border-color: var(--accent); }
+button.primary:disabled { background: var(--border); border-color: var(--border); color: var(--text-secondary); }
+.rules-toggle { text-align: center; margin-top: 20px; }
+.rules-toggle a { font-size: 13px; color: var(--text-secondary); cursor: pointer; text-decoration: underline; }
+.rules { display: none; background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin-top: 12px; font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+.rules.show { display: block; }
+.rules table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+.rules td { padding: 3px 0; border-bottom: 1px solid var(--border); }
+.hist-row {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 13px; padding: 8px 10px; border-radius: 8px; background: var(--bg);
+  border: 1px solid var(--border);
+}
+.hist-row .who { font-weight: 500; }
+.hist-row.farkle { color: var(--danger); }
+.hist-row.bank { color: var(--success); }
+.hist-empty { font-size: 13px; color: var(--text-secondary); text-align: center; padding: 8px 0; }
+---2
+
+.hand-block { margin-bottom: 18px; }
+.hand-label { font-size: 13px; color: var(--text-secondary); text-align: center; margin-bottom: 6px; }
+.hand-total { text-align: center; font-weight: 600; font-size: 15px; margin-bottom: 8px; }
+.hand { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; min-height: 96px; }
+
+.card {
+  width: 60px; height: 88px; border-radius: 8px; border: 1px solid var(--border);
+  background: var(--card); display: flex; flex-direction: column; justify-content: space-between;
+  padding: 6px; font-weight: 700; font-size: 15px;
+}
+.card.red { color: var(--danger); }
+.card.black { color: var(--text); }
+.card .suit { align-self: center; font-size: 22px; }
+.card .rank-bottom { align-self: flex-end; transform: rotate(180deg); }
+
+.card.ace { cursor: pointer; border-color: var(--accent); }
+.card.ace .rank-top, .card.ace .rank-bottom { color: var(--accent); }
+.card.hidden {
+  background: repeating-linear-gradient(45deg, var(--accent-bg), var(--accent-bg) 6px, var(--accent) 6px, var(--accent) 12px);
+  border-color: var(--accent);
+}
+
+.bet-row { display: flex; gap: 10px; align-items: center; margin-bottom: 8px; }
+.bet-row input[type="number"] {
+  flex: 1; padding: 10px; border-radius: 10px; border: 1px solid var(--border);
+  background: var(--card); color: var(--text); font-size: 15px;
+}
+.ace-hint { text-align: center; font-size: 12px; color: var(--text-secondary); margin-bottom: 8px; }

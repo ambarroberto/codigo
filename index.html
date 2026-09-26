@@ -1,0 +1,61 @@
+<html lang="es"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>10000 - Juego de dados</title>
+<link rel="stylesheet" href="../CSS/practica.css"">
+</head>
+<body>
+<div class="wrap">
+  <h1>10000 - vos vs. la computadora</h1>
+
+  <div class="scores">
+    <div class="score-card" id="cardPlayer">
+      <p class="label">Vos</p>
+      <p class="value" id="playerScore">0</p>
+    </div>
+    <div class="score-card" id="cardComputer">
+      <p class="label">Computadora</p>
+      <p class="value" id="computerScore">0</p>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="turn-info">
+      <span>Turno: <b id="turnLabel">Vos</b></span>
+      <span>Acumulado del turno: <b id="turnScoreLabel">0</b></span>
+    </div>
+    <div class="dice-row" id="diceRow"></div>
+    <div class="msg" id="msg">Presioná "Tirar dados" para empezar.</div>
+    <div class="actions">
+      <button class="primary" id="btnRoll">Tirar dados</button>
+      <button id="btnBank" disabled="">Plantarse</button>
+    </div>
+  </div>
+
+  <div class="panel">
+    <p>Historial de turnos</p>
+  </div>
+
+  <div class="rules-toggle"><a id="rulesLink">Ver tabla de puntajes</a></div>
+  <div class="rules" id="rulesBox">
+    <table>
+      <tbody><tr><td>Un 1 suelto</td><td>100</td></tr>
+      <tr><td>Un 5 suelto</td><td>50</td></tr>
+      <tr><td>Trío de 1 (111)</td><td>1000</td></tr>
+      <tr><td>Trío de 2 (222)</td><td>200</td></tr>
+      <tr><td>Trío de 3 (333)</td><td>300</td></tr>
+      <tr><td>Trío de 4 (444)</td><td>400</td></tr>
+      <tr><td>Trío de 5 (555)</td><td>500</td></tr>
+      <tr><td>Trío de 6 (666)</td><td>600</td></tr>
+      <tr><td>Cada dado extra igual al trío</td><td>duplica ese valor</td></tr>
+      <tr><td>Escalera (1-2-3-4-5-6)</td><td>1500</td></tr>
+      <tr><td>Tres pares</td><td>750</td></tr>
+    </tbody></table>
+    <p>Si en una tirada ningún dado puntúa, es Farkle: perdés lo acumulado en el turno.</p>
+  </div>
+</div>
+
+<script src="../JS/practica.js"></script>
+
+
+</body></html>
