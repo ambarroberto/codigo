@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Blackjack</title>
+<link rel="stylesheet" href="../CSS/practica.css">
+</head>
+<body>
+<div class="wrap">
+  <p style="text-align:center;margin-bottom:12px;"><a href="index.html" style="font-size:13px;color:var(--text-secondary);">&larr; Volver al menú</a></p>
+  <h1>Blackjack - vos vs. el dealer</h1>
+
+  <div class="scores">
+    <div class="score-card active">
+      <p class="label">Tus fichas</p>
+      <p class="value" id="chipsValue">100</p>
+    </div>
+    <div class="score-card">
+      <p class="label">Apuesta actual</p>
+      <p class="value" id="betValue">0</p>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="hand-block">
+      <p class="hand-label">Dealer</p>
+      <p class="hand-total" id="dealerTotal">-</p>
+      <div class="hand" id="dealerHand"></div>
+    </div>
+    <div class="hand-block">
+      <p class="hand-label">Vos</p>
+      <p class="hand-total" id="playerTotal">-</p>
+      <div class="hand" id="playerHand"></div>
+      <p class="ace-hint" id="aceHint" style="display:none;">Tocá un As para elegir si vale 1 u 11</p>
+    </div>
+
+    <div class="msg" id="msg">Ingresá tu apuesta para empezar la mano.</div>
+
+    <div class="bet-row" id="betRow">
+      <input type="number" id="betInput" min="1" value="10">
+      <button class="primary" id="btnApostar" style="flex:1;">Apostar</button>
+    </div>
+
+    <div class="actions" id="playActions" style="display:none;">
+      <button class="primary" id="btnHit">Pedir carta</button>
+      <button id="btnStand">Plantarse</button>
+    </div>
+  </div>
+
+  <div class="panel">
+    <p style="margin:0 0 10px;font-size:14px;font-weight:500;">Historial de manos</p>
+    <div id="history" style="display:flex;flex-direction:column-reverse;gap:6px;max-height:220px;overflow-y:auto;"></div>
+  </div>
+</div>
+
+<script src="../JS/jcartas.js"></script>
+</body>
+</html>
