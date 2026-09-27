@@ -1,0 +1,72 @@
+<html lang="es"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Trivia - vos vs. la computadora</title>
+<link rel="stylesheet" href="../CSS/tptrivia.css">
+<link rel="stylesheet" href="../css/trivia.css">
+</head>
+<body>
+<div class="wrap">
+
+  <div class="zona-bar">zona juegos</div>
+
+  <nav class="nav">
+    <span class="nav-item">Inicio</span>
+    <span class="nav-item">10000</span>
+    <span class="nav-item">Blackjack</span>
+    <span class="nav-item active">Trivia</span>
+  </nav>
+
+  <h1>Trivia - vos vs. la computadora</h1>
+
+  <div class="columns">
+
+    <div class="col">
+      <div class="panel mini-scores">
+        <div class="mini-score">
+          <p class="label">Vos</p>
+          <p class="value" id="playerScore">0</p>
+        </div>
+        <div class="mini-score">
+          <p class="label">Computadora</p>
+          <p class="value" id="computerScore">0</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <p>Historial de preguntas</p>
+        <div id="history" class="history-list"></div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="panel">
+        <p class="question-meta" id="questionMeta">Cargando preguntas...</p>
+        <p class="question-text" id="questionText"></p>
+        <div class="actions">
+          <button class="primary answer-btn" id="btnTrue" disabled="">Verdadero</button>
+          <button class="answer-btn" id="btnFalse" disabled="">Falso</button>
+        </div>
+        <div class="feedback" id="feedback"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="rules-toggle"><a id="rulesLink">Ver reglas</a></div>
+  <div class="rules" id="rulesBox">
+    <p>Se juegan 10 preguntas de verdadero o falso.</p>
+    <p>En cada pregunta respondés primero vos y despues la computadora.</p>
+    <p>Cada acierto suma 1 punto. El que mas puntos tenga al final de las 10 preguntas gana.</p>
+  </div>
+
+  <div class="banner-goal">el que mas aciertos suma, gana!</div>
+
+  <div class="guide-link"><a href="#">guia de juego</a></div>
+
+  <footer class="site-footer">tp1 2026</footer>
+
+</div>
+<script src="../JS/tptrivia.js"></script>
+</body>
+</html>

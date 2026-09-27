@@ -1,0 +1,74 @@
+/* Este archivo va aparte, en css/trivia.css. Ademas necesita el style.css
+   que ya tenes (wrap, zona-bar, nav, columns, col, panel, actions, primary,
+   rules-toggle, rules, banner-goal, guide-link, site-footer). */
+
+.mini-scores {
+  display: flex;
+  gap: 16px;
+}
+
+.mini-score {
+  flex: 1;
+  text-align: center;
+}
+
+.mini-score .label {
+  margin: 0 0 6px;
+  font-size: 13px;
+  color: #aaa;
+}
+
+.mini-score .value {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 13px;
+  color: #bbb;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.hist-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid #232323;
+  padding-bottom: 6px;
+}
+
+.question-meta {
+  margin: 0 0 14px;
+  font-size: 14px;
+  color: #ddd;
+}
+
+.question-text {
+  margin: 0 0 20px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.answer-btn {
+  flex: 1;
+}
+
+.feedback {
+  margin-top: 14px;
+  font-size: 13px;
+  text-align: center;
+  min-height: 18px;
+}
+
+.feedback.ok {
+  color: #7fd88f;
+}
+
+.feedback.fail {
+  color: #e08787;
+}
